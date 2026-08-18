@@ -1,0 +1,2 @@
+exit=1
+FAIL: book 978-0-13-468599-1 lacks a tags array of strings

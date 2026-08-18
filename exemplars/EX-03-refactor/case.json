@@ -1,0 +1,20 @@
+{
+  "id": "EX-03",
+  "promoted_from": "TEH-R030",
+  "task_type": "refactor",
+  "family": "json-structure-include",
+  "tier": "S",
+  "prompt": "Revise the JSON structure in the workspace file `structure.json` to include a nested array for tags.",
+  "prompt_addendum": "Modify structure.json in place: every book gains a `tags` field that is an array of strings (it may be empty). All existing fields and values must be preserved unchanged.",
+  "workspace": { "required": true, "artifact": "structure.json", "status": "frozen" },
+  "gate": {
+    "kind": "command",
+    "run": "node gate/check.mjs workspace",
+    "must_exit_zero": true,
+    "timeout_s": 60,
+    "style": "command+invariant",
+    "invariant_note": "the check enforces both the target (tags arrays present) and the invariant (original fields byte-identical after removing tags)"
+  },
+  "gold": { "required": false, "status": "n/a" },
+  "budget_ceiling_tokens": 50000
+}

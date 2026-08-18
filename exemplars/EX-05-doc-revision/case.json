@@ -1,0 +1,20 @@
+{
+  "id": "EX-05",
+  "promoted_from": "TEH-R032",
+  "task_type": "doc-revision",
+  "family": "longwinded-paragraph-exactly",
+  "tier": "S",
+  "prompt": "Revise the long-winded paragraph in the workspace file `longwinded-paragraph.txt` into exactly two concise sentences.",
+  "prompt_addendum": "Save the revision as revised.txt in the workspace.",
+  "workspace": { "required": true, "artifact": "longwinded-paragraph.txt", "status": "frozen" },
+  "gate": {
+    "kind": "command",
+    "run": "node gate/check.mjs workspace",
+    "must_exit_zero": true,
+    "timeout_s": 60,
+    "style": "judged+structural",
+    "note": "structural stage (this check): exactly 2 sentences, materially shorter than the input. Judged stage (full runs): meaning preserved, scored against gold/rubric. The input artifact deliberately contains no abbreviations or decimal points, so naive sentence splitting is sound."
+  },
+  "gold": { "required": true, "status": "frozen", "answer_file": "gold/gold.md" },
+  "budget_ceiling_tokens": 30000
+}

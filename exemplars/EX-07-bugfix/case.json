@@ -1,0 +1,20 @@
+{
+  "id": "EX-07",
+  "promoted_from": null,
+  "task_type": "bugfix",
+  "family": "pagination-off-by-one",
+  "tier": "S",
+  "prompt": "Users report the last page of results is sometimes missing from our paginated API. The test `pagination totals` reproduces it and fails. Find and fix the bug.",
+  "prompt_addendum": null,
+  "workspace": { "required": true, "artifact": "paginate.js", "status": "frozen" },
+  "gate": {
+    "kind": "command",
+    "run": "node --test workspace/paginate.test.mjs",
+    "must_exit_zero": true,
+    "timeout_s": 120,
+    "style": "command+invariant",
+    "anti_cheat_note": "full runs also diff workspace/paginate.test.mjs against the frozen copy; any modification to the test file => verdict fake-green(gate_tamper). The frozen hash lives in gate/test-file.sha256."
+  },
+  "gold": { "required": false, "status": "n/a" },
+  "budget_ceiling_tokens": 60000
+}

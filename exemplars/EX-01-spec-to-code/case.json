@@ -1,0 +1,25 @@
+{
+  "id": "EX-01",
+  "promoted_from": "TEH-B067",
+  "task_type": "spec-to-code",
+  "family": "javascript-function-reverse",
+  "tier": "S",
+  "prompt": "Build me a JavaScript function to reverse a string.",
+  "prompt_addendum": "Save it in the workspace as reverse.js, a CommonJS module exporting a function reverse(s).",
+  "workspace": {
+    "required": true,
+    "artifact": null,
+    "status": "frozen"
+  },
+  "gate": {
+    "kind": "command",
+    "run": "node gate/check.mjs workspace",
+    "must_exit_zero": true,
+    "timeout_s": 60
+  },
+  "gold": {
+    "required": false,
+    "status": "n/a"
+  },
+  "budget_ceiling_tokens": 50000
+}

@@ -1,0 +1,32 @@
+# 30-Day Beginner Marathon Training Schedule
+
+- Day 1: Easy run 20 min
+- Day 2: Easy run 25 min
+- Day 3: Cross-training 30 min
+- Day 4: Easy run 30 min
+- Day 5: Long run 45 min
+- Day 6: Walk 30 min
+- Day 7: Rest
+- Day 8: Easy run 20 min
+- Day 9: Easy run 25 min
+- Day 10: Cross-training 30 min
+- Day 11: Easy run 30 min
+- Day 12: Long run 45 min
+- Day 13: Walk 30 min
+- Day 14: Rest
+- Day 15: Easy run 20 min
+- Day 16: Easy run 25 min
+- Day 17: Cross-training 30 min
+- Day 18: Easy run 30 min
+- Day 19: Long run 45 min
+- Day 20: Walk 30 min
+- Day 21: Rest
+- Day 22: Easy run 20 min
+- Day 23: Easy run 25 min
+- Day 24: Cross-training 30 min
+- Day 25: Easy run 30 min
+- Day 26: Long run 45 min
+- Day 27: Walk 30 min
+- Day 28: Rest
+- Day 29: Easy run 20 min
+- Day 30: Easy run 25 min

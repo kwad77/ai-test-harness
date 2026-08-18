@@ -1,0 +1,4 @@
+exit=1
+FAIL: cannot load reverse.js from /home/kwad77/ai-test-harness/exemplars/EX-01-spec-to-code/workspace: Cannot find module '/home/kwad77/ai-test-harness/exemplars/EX-01-spec-to-code/workspace/reverse.js'
+Require stack:
+- /home/kwad77/ai-test-harness/exemplars/EX-01-spec-to-code/gate/check.mjs

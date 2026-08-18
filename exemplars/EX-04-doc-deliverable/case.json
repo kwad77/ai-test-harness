@@ -1,0 +1,20 @@
+{
+  "id": "EX-04",
+  "promoted_from": "TEH-B002",
+  "task_type": "doc-deliverable",
+  "family": "30day-beginner-marathon",
+  "tier": "M",
+  "prompt": "Build me a 30-day beginner marathon training schedule.",
+  "prompt_addendum": "Save it as schedule.md in the workspace, with one entry per day labeled 'Day 1' through 'Day 30', each with a planned activity.",
+  "workspace": { "required": true, "artifact": null, "status": "frozen" },
+  "gate": {
+    "kind": "command",
+    "run": "node gate/check.mjs workspace",
+    "must_exit_zero": true,
+    "timeout_s": 60,
+    "style": "structural",
+    "note": "structural witness only: all 30 day entries exist with non-empty content. Content quality (sensible progression, rest days) is judge-scored in full runs; this exemplar's conformance proofs cover the structural stage."
+  },
+  "gold": { "required": false, "status": "n/a" },
+  "budget_ceiling_tokens": 80000
+}

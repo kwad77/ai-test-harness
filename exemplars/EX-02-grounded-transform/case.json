@@ -1,0 +1,20 @@
+{
+  "id": "EX-02",
+  "promoted_from": "TEH-G007",
+  "task_type": "grounded-transform",
+  "family": "json-file-extract",
+  "tier": "S",
+  "prompt": "Using the workspace file `data.json` (a JSON file), extract all the user email addresses.",
+  "prompt_addendum": "Write the addresses to emails.txt in the workspace, one per line, sorted alphabetically.",
+  "workspace": { "required": true, "artifact": "data.json", "status": "frozen" },
+  "gate": {
+    "kind": "command",
+    "run": "node gate/check.mjs workspace",
+    "must_exit_zero": true,
+    "timeout_s": 60,
+    "style": "exact-match"
+  },
+  "gold": { "required": true, "status": "frozen", "note": "gold set is embedded in gate/check.mjs" },
+  "budget_ceiling_tokens": 50000,
+  "trap_note": "data.json contains one decoy email-shaped string outside any user record (support contact) and one user with a nested contact block; the gold set is exactly the 5 user emails."
+}

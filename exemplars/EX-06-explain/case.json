@@ -1,0 +1,17 @@
+{
+  "id": "EX-06",
+  "promoted_from": "TEH-E039",
+  "task_type": "explain",
+  "family": "compound-interest",
+  "tier": "S",
+  "prompt": "what is compound interest?",
+  "prompt_addendum": null,
+  "workspace": { "required": false, "artifact": null, "status": "n/a" },
+  "gate": {
+    "kind": "judged",
+    "note": "no runnable command gate; the runner captures the agent's final message as answer.md and builds a judge packet (see judge-packet.template.json). validated = judge score >= 2 AND zero tier-1 hallucinated references in the answer.",
+    "timeout_s": 300
+  },
+  "gold": { "required": true, "status": "frozen", "answer_file": "gold/gold.md" },
+  "budget_ceiling_tokens": 20000
+}

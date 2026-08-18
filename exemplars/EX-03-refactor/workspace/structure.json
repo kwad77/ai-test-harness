@@ -1,0 +1,8 @@
+{
+  "store": "Marginalia Books",
+  "books": [
+    { "isbn": "978-0-13-468599-1", "title": "The Pragmatic Programmer", "price": 39.99, "stock": 4 },
+    { "isbn": "978-0-262-03384-8", "title": "Introduction to Algorithms", "price": 89.5, "stock": 2 },
+    { "isbn": "978-1-59327-928-8", "title": "Eloquent JavaScript", "price": 27.0, "stock": 11 }
+  ]
+}

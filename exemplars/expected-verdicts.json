@@ -1,0 +1,12 @@
+{
+  "note": "Conformance contract: a correctly built runner/scorer must reproduce exactly these verdicts. Run `node exemplars/run-proofs.mjs` — exit 0 means your gate execution matches.",
+  "exemplars": {
+    "EX-01-spec-to-code": { "untouched": "fail", "reference": "pass" },
+    "EX-02-grounded-transform": { "untouched": "fail", "reference": "pass" },
+    "EX-03-refactor": { "untouched": "fail", "reference": "pass" },
+    "EX-04-doc-deliverable": { "untouched": "fail", "reference": "pass" },
+    "EX-05-doc-revision": { "untouched": "fail", "reference": "pass" },
+    "EX-06-explain": { "untouched": "judge-required", "reference": "judge-required" },
+    "EX-07-bugfix": { "untouched": "fail", "reference": "pass" }
+  }
+}

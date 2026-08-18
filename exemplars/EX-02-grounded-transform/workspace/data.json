@@ -1,0 +1,13 @@
+{
+  "meta": {
+    "exported": "2026-03-02",
+    "support_contact": "helpdesk@corp-internal.example"
+  },
+  "users": [
+    { "id": 101, "name": "Ana Ortiz", "email": "ana.ortiz@example.com", "active": true },
+    { "id": 102, "name": "Ben Liu", "email": "ben.liu@example.org", "active": false },
+    { "id": 103, "name": "Carla Mbeki", "contact": { "email": "carla.mbeki@example.net", "phone": "555-0141" }, "active": true },
+    { "id": 104, "name": "Dev Patel", "email": "dev.patel@example.com", "active": true },
+    { "id": 105, "name": "Eiko Tanaka", "contact": { "email": "eiko.tanaka@example.org" }, "active": true }
+  ]
+}

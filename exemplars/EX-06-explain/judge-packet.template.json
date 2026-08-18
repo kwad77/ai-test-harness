@@ -1,0 +1,13 @@
+{
+  "note": "the runner fills this and sends it to the pinned judge model; the judge never sees the agent transcript",
+  "judge_model": "<pinned, e.g. claude-sonnet-5>",
+  "judge_prompt_hash": "<sha256 of the judge system prompt>",
+  "packet": {
+    "case_id": "EX-06",
+    "prompt": "what is compound interest?",
+    "agent_answer": "<answer.md content>",
+    "gold": "<gold/gold.md content>",
+    "workspace_artifact": null
+  },
+  "expected_response_schema": { "score": "0|1|2|3", "rationale": "string", "false_claims": ["string"] }
+}
