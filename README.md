@@ -66,6 +66,63 @@ alternative. Rules that keep it honest: coverage is printed on every table, toke
 compared across model families (use CPV), and estimated token counts are never interleaved with
 exact ones.
 
+## What you should expect to get out of it
+
+If you build the harness to this spec and run a benchmark, the end product is a **decision
+scorecard** per task type — enough to walk into a tooling/procurement discussion with numbers instead
+of impressions. It looks like this:
+
+> **⚠ Everything below is a mock-up with invented numbers**, included to show the shape of the
+> deliverable. No benchmark has been run yet.
+
+```
+CASE SET teh-v1 · TASK TYPE: bugfix · coverage: 10 of 10 cases, 5 runs each
+─────────────────────────────────────────────────────────────────────────────────────────
+SUT                          VR      CPV        TPV*       fake-green  med tokens   HRR
+                                     $/valid    tok/valid  rate        to-honest-   /1k out
+                                                           (headline)  block
+─────────────────────────────────────────────────────────────────────────────────────────
+api-loop / claude-sonnet-5   92%     $0.41      118k       0%          6.2k         0.3
+claude-code / claude-opus-5  96%     $0.97      141k       0%          4.8k         0.1
+api-loop / gpt-5-codex       88%     $0.52      —†         2%          19.4k        0.7
+codex-cli / gpt-5-codex      90%     $0.66      —†         0%          11.0k        0.4
+─────────────────────────────────────────────────────────────────────────────────────────
+ESTIMATED TIER (token counts are lower bounds; do not compare with rows above)
+cursor / claude-sonnet-5     94%     ≥$0.58     ≥97k       2%          ≥8.1k        0.2
+─────────────────────────────────────────────────────────────────────────────────────────
+* TPV comparable only within a model family (different tokenizers). Cross-family: use CPV.
+† suppressed: cross-family token comparison.
+
+RECOMMENDATION (bugfix): api-loop/claude-sonnet-5 clears the bars (VR ≥ 90%, fake-green = 0)
+at the lowest cost. claude-code/claude-opus-5 buys +4pts validation rate and the fastest
+honest-block for 2.4× the cost — worth it if failed fixes are expensive for you.
+FLAG: api-loop/gpt-5-codex is the only SUT with nonzero fake-green (1 run claimed a fix,
+gate red) — see runs/EX-BF-014/run-3/verdict.json.
+```
+
+You get one of these per task type, plus the cost-vs-validation-rate frontier plot across all task
+types. Behind every number is a per-run receipt you can audit:
+
+```jsonc
+// results/teh-v1/api-loop__gpt-5-codex/BF-014/run-3/verdict.json  (mock)
+{
+  "outcome": "fake-green",
+  "gate": { "exit": 1, "reason": "target test still failing" },
+  "agent_claimed_success": true,
+  "usage": { "tokens_in": 84210, "tokens_out": 9114, "cache_read": 61050, "cost_usd": 0.31, "token_source": "provider_api" },
+  "halluc_refs": [ { "kind": "claimed-but-never-ran", "claim": "npm test passes" } ],
+  "wall_clock_s": 212, "tool_calls": 19, "retries": 2
+}
+```
+
+So the sentence you should expect to be able to say after a run is:
+*"For task type T, tool A delivers a verified result for $X on average, tool B costs Y× more for Z
+points of reliability, and tool C lied about being done in N% of runs — here are the receipts."*
+
+What the harness will **not** give you: a single overall winner (results are per task type by
+design), cross-vendor token comparisons (tokenizers differ; dollars are the common unit), or any
+number extrapolated beyond the cases that actually ran (coverage is printed on every table).
+
 ## Shaping the dataset to YOUR use cases
 
 The 585 seed cases are a starting point, not a canon. The whole design assumes you'll reshape it —
