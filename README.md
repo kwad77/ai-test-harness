@@ -68,7 +68,7 @@ exact ones.
 
 ## Shaping the dataset to YOUR use cases
 
-The 500 seed cases are a starting point, not a canon. The whole design assumes you'll reshape it —
+The 585 seed cases are a starting point, not a canon. The whole design assumes you'll reshape it —
 efficiency measured on someone else's workload is only directionally useful.
 
 **Subset it.** Every case has a `task_type`, `family`, and `tier`. If your team's reality is 70%
