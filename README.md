@@ -41,30 +41,77 @@ The full design — metrics, validation rules, judge protocol, threats to validi
 | `AUTHORING.md` | The playbook for promoting seed cases and authoring new ones |
 | `tools/build-seed-cases.mjs` | Provenance: the generator that produced the seed set (runs only against its source corpus) |
 
-## How to use it
+## From clone to numbers: the step-by-step
 
-**Today (spec + dataset + exemplars; the runner is not built yet):**
+Be clear about what you're holding: **this repo is a specification + dataset + acceptance tests. The
+software that generates numbers does not exist yet — you (or an agent you hand this to) build it,
+and the repo tells you exactly what "built correctly" means at every step.** No step below requires
+asking the authors anything.
+
+### Step 1 — Verify the ground truth on your machine (5 minutes)
 
 ```sh
-node exemplars/run-proofs.mjs
-# expected: 6x "ok (untouched fails, reference passes)" + 1x judge-required, exit 0
+git clone <this repo> && cd ai-test-harness
+node exemplars/run-proofs.mjs   # needs Node 20+
 ```
 
-That command is the ground truth for what "a gate" means here: each exemplar's gate is executed
-against the untouched workspace (must fail) and against the reference solution (must pass). When you
-build the runner, drive it against the exemplars until it reproduces `exemplars/expected-verdicts.json`
-exactly — then you know your scoring is trustworthy before any expensive benchmark runs.
+**Expect:** `6x "ok (untouched fails, reference passes)" + 1x judge-required`, exit 0.
+This proves the seven exemplar gates behave as documented on your machine. If this fails, stop —
+nothing downstream can be trusted until it passes.
 
-**Build order** (SPEC.md §12): runner skeleton + the `api-loop` control adapter first (a minimal
-fixed scaffold over OpenRouter, so model-to-model comparisons aren't confounded by vendor harness
-differences), then the commercial-tool adapters. Every adapter implements just three functions:
-`provision(workspace)`, `run(prompt)`, `usage()`.
+### Step 2 — Build the harness (the "execute the spec" step)
 
-**Reading results:** the deliverable of a benchmark run is a decision scorecard — for each task type,
-the cheapest tool that clears the validation-rate and honesty bars, plus the price of every
-alternative. Rules that keep it honest: coverage is printed on every table, token counts are never
-compared across model families (use CPV), and estimated token counts are never interleaved with
-exact ones.
+Hand `SPEC.md` to whoever is building — an engineer or a coding agent. The build order is SPEC §12:
+runner skeleton + the `api-loop` control adapter first (a minimal fixed scaffold over OpenRouter, so
+model-to-model comparisons aren't confounded by vendor harness differences). Every adapter is three
+functions: `provision(workspace)`, `run(prompt)`, `usage()`.
+
+**Expect:** days of work for P0, not hours and not weeks.
+**Done when (mechanical, no judgment):** the built runner, executing gates through its own code path,
+reproduces `exemplars/expected-verdicts.json` exactly, and writes per-run artifacts in the SPEC §8
+layout. If the builder claims done and this check fails, it is not done.
+
+### Step 3 — First real numbers: benchmark the exemplars
+
+Run the built harness: 7 exemplar cases × 2+ models via `api-loop` × 5 repetitions.
+
+**Expect:** your first genuine scorecard within an hour of Step 2 finishing, shaped exactly like the
+mock below, with a coverage line reading `7 of 7 cases, 5 runs each`. Costs are small (single-digit
+dollars). The numbers are honest but narrow — 7 cases ranks nothing reliably; this step exists to
+prove the pipeline end-to-end and to catch scoring bugs while runs are cheap.
+
+### Step 4 — Widen to the task types YOU care about
+
+Pick the task types matching your team's real workload, then promote seed cases from
+`cases/teh-v1-seed-cases.json` following `AUTHORING.md` (copy the matching exemplar's shape).
+
+**Expect:** this is human authoring work the harness cannot do for you — roughly 30–60 minutes per
+case (workspace artifact, gate, fail/pass proofs; gold + rubric for judged types). Budget it like
+test-writing. You do NOT need all 585: ~10 promoted cases per task type you care about is enough for
+a defensible per-type ranking (SPEC §8.5 publication bar).
+
+For `explain`/`grounded-transform` judged scoring, pin the judge first (SPEC §5.3) — judged numbers
+before judge-stability checks are noise.
+
+### Step 5 — Add the tools you're actually evaluating
+
+Build adapters for the commercial tools in your POC (SPEC §3): `claude-code` and `codex-cli` expose
+usable usage logs; `cursor`/`copilot` land in the clearly-marked **estimated tier** because they hide
+token counts.
+
+**Expect:** the same model to cost somewhat different amounts under different harnesses — that
+difference is real (system prompts, context injection) and is precisely what the `api-loop` control
+rows let you isolate.
+
+### Step 6 — Run the matrix and read the scorecard
+
+Declare a run manifest (case set, SUTs, N=5, budget ceilings, pinned judges — SPEC §8), run it, and
+read the per-task-type scorecards.
+
+**Expect:** the output in the next section — per task type: the cheapest tool that clears your
+validation-rate and honesty bars, the price of each alternative, fake-green flags with receipts.
+Re-run the same frozen case set when vendors ship major updates; versioned case sets keep the
+numbers comparable over time.
 
 ## What you should expect to get out of it
 
