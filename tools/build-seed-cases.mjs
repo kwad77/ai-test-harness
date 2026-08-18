@@ -6,8 +6,10 @@
 import fs from 'node:fs';
 
 const ROOT = '/home/kwad77/pinchos';
+const OUT = new URL('../cases/teh-v1-seed-cases.json', import.meta.url).pathname;
 const modes = JSON.parse(fs.readFileSync(`${ROOT}/docs/dogfood/modes-400-journeys.json`, 'utf8'));
 const answers = JSON.parse(fs.readFileSync(`${ROOT}/docs/dogfood/answer-cases-100.json`, 'utf8'));
+const ambitiousMd = fs.readFileSync(`${ROOT}/docs/testing/journeys-500/ambitious-clean.md`, 'utf8');
 
 const CODEISH = /\b(code|python|javascript|typescript|html|css|sql|json|xml|api|regex|regular expression|docker|dockerfile|react|git|schema|database|algorithm|spreadsheet formula|deployment script|function|query|payload|system prompt|test case|script to|bot|app|website|web page|webpage|scraper|parser|cli|program)\b/i;
 // doc-shaped despite matching a code keyword
@@ -127,6 +129,26 @@ for (const m of modes) {
   }
 }
 
+// ambitious tier: numbered entries "N. **Title:** description..." spanning multiple lines
+const entries = [];
+for (const block of ambitiousMd.split(/\n(?=\d+\.\s+\*\*)/)) {
+  const m = block.match(/^(\d+)\.\s+\*\*(.+?):?\*\*:?\s*([\s\S]+)$/);
+  if (!m) continue;
+  entries.push({ n: +m[1], title: m[2].trim(), text: m[3].replace(/\s+/g, ' ').trim() });
+}
+if (entries.length !== 85) throw new Error(`expected 85 ambitious entries, parsed ${entries.length}`);
+let amb = 0;
+for (const it of entries) {
+  amb++;
+  push(`TEH-A${String(amb).padStart(3, '0')}`, 'ambitious', it.text, `corpus:ambitious-clean#${it.n}`, {
+    tier: 'L',
+    gate_style: 'contract-tree (deferred)',
+  });
+  const c = cases[cases.length - 1];
+  c.title = it.title;
+  c.gate.status = 'deferred-decomposition-tier';
+}
+
 let e = 0;
 for (const a of answers) {
   e++;
@@ -142,17 +164,18 @@ const out = {
   schema_version: 1,
   case_set: 'teh-v1-seed',
   status: 'seed — prompts are frozen; workspaces, gates, and golds are authored during promotion (see testing-harness.md §2.2)',
-  generated_by: 'docs/testing/teh/build-seed-cases.mjs',
-  sources: ['docs/dogfood/modes-400-journeys.json', 'docs/dogfood/answer-cases-100.json'],
+  generated_by: 'tools/build-seed-cases.mjs',
+  sources: ['docs/dogfood/modes-400-journeys.json', 'docs/dogfood/answer-cases-100.json', 'docs/testing/journeys-500/ambitious-clean.md'],
   counts: { total: cases.length, by_task_type: byType },
   notes: [
-    'tier is a seed default (explain=S, rest=M); re-band during promotion',
+    'tier is a seed default (explain=S, ambitious=L, rest=M); re-band during promotion',
     'interactive cases are deferred to v2 (need a scripted-user simulator)',
+    'ambitious cases are deferred until the decomposition-honesty tier exists (SPEC 11.1): scored on contract-tree decomposition + honest blocks, not full delivery',
     'original_prompt preserved wherever the prompt was rewritten to re-point at a workspace artifact',
   ],
   cases,
 };
 
-fs.writeFileSync(`${ROOT}/docs/testing/teh/teh-v1-seed-cases.json`, JSON.stringify(out, null, 1) + '\n');
+fs.writeFileSync(OUT, JSON.stringify(out, null, 1) + '\n');
 console.log('counts:', JSON.stringify(byType));
 console.log('rewrites:', rewrites.unchanged, 'unchanged,', rewrites.repointed, 'repointed, fallbacks:', rewrites.fallback.join(',') || 'none');

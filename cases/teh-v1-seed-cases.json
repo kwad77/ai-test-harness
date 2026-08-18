@@ -2,13 +2,14 @@
  "schema_version": 1,
  "case_set": "teh-v1-seed",
  "status": "seed — prompts are frozen; workspaces, gates, and golds are authored during promotion (see testing-harness.md §2.2)",
- "generated_by": "docs/testing/teh/build-seed-cases.mjs",
+ "generated_by": "tools/build-seed-cases.mjs",
  "sources": [
   "docs/dogfood/modes-400-journeys.json",
-  "docs/dogfood/answer-cases-100.json"
+  "docs/dogfood/answer-cases-100.json",
+  "docs/testing/journeys-500/ambitious-clean.md"
  ],
  "counts": {
-  "total": 500,
+  "total": 585,
   "by_task_type": {
    "spec-to-code": 15,
    "doc-deliverable": 85,
@@ -16,12 +17,14 @@
    "grounded-transform": 100,
    "doc-revision": 86,
    "refactor": 14,
+   "ambitious": 85,
    "explain": 100
   }
  },
  "notes": [
-  "tier is a seed default (explain=S, rest=M); re-band during promotion",
+  "tier is a seed default (explain=S, ambitious=L, rest=M); re-band during promotion",
   "interactive cases are deferred to v2 (need a scripted-user simulator)",
+  "ambitious cases are deferred until the decomposition-honesty tier exists (SPEC 11.1): scored on contract-tree decomposition + honest blocks, not full delivery",
   "original_prompt preserved wherever the prompt was rewritten to re-point at a workspace artifact"
  ],
  "cases": [
@@ -8624,6 +8627,1876 @@
    },
    "provenance": "corpus:modes-400-journeys#M400",
    "original_prompt": "Change this text to read like a classic fairytale beginning with Once upon a time."
+  },
+  {
+   "id": "TEH-A001",
+   "task_type": "ambitious",
+   "family": "write-minimal-bootable",
+   "tier": "L",
+   "prompt": "Write a minimal, bootable operating system kernel in C and Assembly that can handle basic memory management, keyboard interrupts, and print a GUI-based \"Hello World\" to the screen.",
+   "workspace": {
+    "required": false,
+    "artifact": null,
+    "status": "n/a"
+   },
+   "gate": {
+    "status": "deferred-decomposition-tier",
+    "style": "contract-tree (deferred)"
+   },
+   "gold": {
+    "required": false,
+    "status": "n/a"
+   },
+   "provenance": "corpus:ambitious-clean#1",
+   "title": "Custom OS Kernel Prototype"
+  },
+  {
+   "id": "TEH-A002",
+   "task_type": "ambitious",
+   "family": "fully-functional-3d",
+   "tier": "L",
+   "prompt": "Build a fully functional 3D first-person shooter in Unity using C# scripts, including procedural level generation, basic enemy AI with pathfinding, and a complete main menu UI.",
+   "workspace": {
+    "required": false,
+    "artifact": null,
+    "status": "n/a"
+   },
+   "gate": {
+    "status": "deferred-decomposition-tier",
+    "style": "contract-tree (deferred)"
+   },
+   "gold": {
+    "required": false,
+    "status": "n/a"
+   },
+   "provenance": "corpus:ambitious-clean#2",
+   "title": "End-to-End Game Development"
+  },
+  {
+   "id": "TEH-A003",
+   "task_type": "ambitious",
+   "family": "python-daemon-continuously",
+   "tier": "L",
+   "prompt": "Build a Python daemon that continuously ingests Bloomberg RSS feeds and Twitter API sentiment, crosses it with historical S&P 500 data, and outputs live trading signals using a self-trained LSTM neural network.",
+   "workspace": {
+    "required": false,
+    "artifact": null,
+    "status": "n/a"
+   },
+   "gate": {
+    "status": "deferred-decomposition-tier",
+    "style": "contract-tree (deferred)"
+   },
+   "gold": {
+    "required": false,
+    "status": "n/a"
+   },
+   "provenance": "corpus:ambitious-clean#3",
+   "title": "Real-time Global Market Predictor"
+  },
+  {
+   "id": "TEH-A004",
+   "task_type": "ambitious",
+   "family": "write-100000word-epic",
+   "tier": "L",
+   "prompt": "Write a 100,000-word epic fantasy novel complete with its own invented, linguistically consistent language (including grammar rules and a 500-word dictionary), a deep geopolitical history, and three interwoven POV character arcs.",
+   "workspace": {
+    "required": false,
+    "artifact": null,
+    "status": "n/a"
+   },
+   "gate": {
+    "status": "deferred-decomposition-tier",
+    "style": "contract-tree (deferred)"
+   },
+   "gold": {
+    "required": false,
+    "status": "n/a"
+   },
+   "provenance": "corpus:ambitious-clean#4",
+   "title": "Novel Writing with Branching Lore"
+  },
+  {
+   "id": "TEH-A005",
+   "task_type": "ambitious",
+   "family": "scaffold-fullstack-social",
+   "tier": "L",
+   "prompt": "Scaffold a full-stack social media clone (like Twitter) including WebSockets for live chatting, Redis for caching feed timelines, an SQL database for user relationships, and an algorithmic recommendation feed.",
+   "workspace": {
+    "required": false,
+    "artifact": null,
+    "status": "n/a"
+   },
+   "gate": {
+    "status": "deferred-decomposition-tier",
+    "style": "contract-tree (deferred)"
+   },
+   "gold": {
+    "required": false,
+    "status": "n/a"
+   },
+   "provenance": "corpus:ambitious-clean#5",
+   "title": "Complete Social Media Platform"
+  },
+  {
+   "id": "TEH-A006",
+   "task_type": "ambitious",
+   "family": "given-basic-axioms",
+   "tier": "L",
+   "prompt": "Given the basic axioms of set theory, autonomously derive and write out the formal proofs for the first 50 theorems of Principia Mathematica without utilizing external libraries or search engines.",
+   "workspace": {
+    "required": false,
+    "artifact": null,
+    "status": "n/a"
+   },
+   "gate": {
+    "status": "deferred-decomposition-tier",
+    "style": "contract-tree (deferred)"
+   },
+   "gold": {
+    "required": false,
+    "status": "n/a"
+   },
+   "provenance": "corpus:ambitious-clean#6",
+   "title": "Automated Theorem Proving"
+  },
+  {
+   "id": "TEH-A007",
+   "task_type": "ambitious",
+   "family": "machine-translation-tool",
+   "tier": "L",
+   "prompt": "Build a machine translation tool in Python that translates between English and a highly low-resource language (e.g., Navajo) by inferring grammar rules purely from a provided bilingual text corpus of only 1,000 sentences.",
+   "workspace": {
+    "required": false,
+    "artifact": null,
+    "status": "n/a"
+   },
+   "gate": {
+    "status": "deferred-decomposition-tier",
+    "style": "contract-tree (deferred)"
+   },
+   "gold": {
+    "required": false,
+    "status": "n/a"
+   },
+   "provenance": "corpus:ambitious-clean#7",
+   "title": "Zero-Shot Language Translation Engine"
+  },
+  {
+   "id": "TEH-A008",
+   "task_type": "ambitious",
+   "family": "design-novel-theoretically",
+   "tier": "L",
+   "prompt": "Design a novel, theoretically quantum-resistant encryption algorithm, write the reference implementation in Rust, and generate a mathematical paper attempting to prove its security bounds against Shor's algorithm.",
+   "workspace": {
+    "required": false,
+    "artifact": null,
+    "status": "n/a"
+   },
+   "gate": {
+    "status": "deferred-decomposition-tier",
+    "style": "contract-tree (deferred)"
+   },
+   "gold": {
+    "required": false,
+    "status": "n/a"
+   },
+   "provenance": "corpus:ambitious-clean#8",
+   "title": "Cryptographic Algorithm Design"
+  },
+  {
+   "id": "TEH-A009",
+   "task_type": "ambitious",
+   "family": "write-local-python",
+   "tier": "L",
+   "prompt": "Write a local Python script utilizing FFmpeg and OpenCV that can ingest 10 hours of raw vlog footage, automatically identify the most visually interesting moments, cut out dead air, and output a polished 10-minute video synced to a provided audio track.",
+   "workspace": {
+    "required": false,
+    "artifact": null,
+    "status": "n/a"
+   },
+   "gate": {
+    "status": "deferred-decomposition-tier",
+    "style": "contract-tree (deferred)"
+   },
+   "gold": {
+    "required": false,
+    "status": "n/a"
+   },
+   "provenance": "corpus:ambitious-clean#9",
+   "title": "Automated Video Editor AI"
+  },
+  {
+   "id": "TEH-A010",
+   "task_type": "ambitious",
+   "family": "analyze-provided-dna",
+   "tier": "L",
+   "prompt": "Analyze a provided DNA sequence, translate it to an amino acid chain, and write a script to simulate and predict its 3D protein folding structure using classical physics equations, outputting a PDB file.",
+   "workspace": {
+    "required": false,
+    "artifact": null,
+    "status": "n/a"
+   },
+   "gate": {
+    "status": "deferred-decomposition-tier",
+    "style": "contract-tree (deferred)"
+   },
+   "gold": {
+    "required": false,
+    "status": "n/a"
+   },
+   "provenance": "corpus:ambitious-clean#10",
+   "title": "Bioinformatics Protein Folding"
+  },
+  {
+   "id": "TEH-A011",
+   "task_type": "ambitious",
+   "family": "create-terraform-kubernetes",
+   "tier": "L",
+   "prompt": "Create a Terraform and Kubernetes setup where an AI monitoring agent detects pod crashes, reads the stack trace, writes a hotfix for the source code, pushes to Git, and deploys the fix without human intervention.",
+   "workspace": {
+    "required": false,
+    "artifact": null,
+    "status": "n/a"
+   },
+   "gate": {
+    "status": "deferred-decomposition-tier",
+    "style": "contract-tree (deferred)"
+   },
+   "gold": {
+    "required": false,
+    "status": "n/a"
+   },
+   "provenance": "corpus:ambitious-clean#11",
+   "title": "Self-Healing Infrastructure CI/CD"
+  },
+  {
+   "id": "TEH-A012",
+   "task_type": "ambitious",
+   "family": "write-complete-compiler",
+   "tier": "L",
+   "prompt": "Write a complete compiler in C++ for a custom, statically typed programming language. It must include a lexer, parser, semantic analyzer, and generate working LLVM intermediate representation (IR) code.",
+   "workspace": {
+    "required": false,
+    "artifact": null,
+    "status": "n/a"
+   },
+   "gate": {
+    "status": "deferred-decomposition-tier",
+    "style": "contract-tree (deferred)"
+   },
+   "gold": {
+    "required": false,
+    "status": "n/a"
+   },
+   "provenance": "corpus:ambitious-clean#12",
+   "title": "Full Compiler Construction"
+  },
+  {
+   "id": "TEH-A013",
+   "task_type": "ambitious",
+   "family": "simplified-distributed-keyvalue",
+   "tier": "L",
+   "prompt": "Build a simplified, distributed key-value store from scratch in Go, implementing the Raft consensus algorithm for leader election and data replication across three local nodes.",
+   "workspace": {
+    "required": false,
+    "artifact": null,
+    "status": "n/a"
+   },
+   "gate": {
+    "status": "deferred-decomposition-tier",
+    "style": "contract-tree (deferred)"
+   },
+   "gold": {
+    "required": false,
+    "status": "n/a"
+   },
+   "provenance": "corpus:ambitious-clean#13",
+   "title": "Distributed Database Engine"
+  },
+  {
+   "id": "TEH-A014",
+   "task_type": "ambitious",
+   "family": "ingest-500page-civil",
+   "tier": "L",
+   "prompt": "Ingest a 500-page civil lawsuit filing and entirely draft a comprehensive legal response, including counterclaims, citing specific case law precedents from the 9th Circuit Court, formatted to court standards.",
+   "workspace": {
+    "required": false,
+    "artifact": null,
+    "status": "n/a"
+   },
+   "gate": {
+    "status": "deferred-decomposition-tier",
+    "style": "contract-tree (deferred)"
+   },
+   "gold": {
+    "required": false,
+    "status": "n/a"
+   },
+   "provenance": "corpus:ambitious-clean#14",
+   "title": "Automated Legal Defense Drafter"
+  },
+  {
+   "id": "TEH-A015",
+   "task_type": "ambitious",
+   "family": "create-system-generates",
+   "tier": "L",
+   "prompt": "Create a system that generates full, multi-instrumental MIDI orchestral scores based on a text prompt describing a specific emotional arc (e.g., \"A tragic hero's final battle\"), adhering strictly to advanced classical music theory.",
+   "workspace": {
+    "required": false,
+    "artifact": null,
+    "status": "n/a"
+   },
+   "gate": {
+    "status": "deferred-decomposition-tier",
+    "style": "contract-tree (deferred)"
+   },
+   "gold": {
+    "required": false,
+    "status": "n/a"
+   },
+   "provenance": "corpus:ambitious-clean#15",
+   "title": "Algorithmic Music Composer"
+  },
+  {
+   "id": "TEH-A016",
+   "task_type": "ambitious",
+   "family": "write-complete-verilog",
+   "tier": "L",
+   "prompt": "Write the complete Verilog or VHDL code for a custom 16-bit RISC CPU architecture, including the ALU, register file, and control unit, ready to be simulated on an FPGA.",
+   "workspace": {
+    "required": false,
+    "artifact": null,
+    "status": "n/a"
+   },
+   "gate": {
+    "status": "deferred-decomposition-tier",
+    "style": "contract-tree (deferred)"
+   },
+   "gold": {
+    "required": false,
+    "status": "n/a"
+   },
+   "provenance": "corpus:ambitious-clean#16",
+   "title": "Complete Microprocessor Architecture"
+  },
+  {
+   "id": "TEH-A017",
+   "task_type": "ambitious",
+   "family": "ecommerce-pricing-engine",
+   "tier": "L",
+   "prompt": "Build an e-commerce pricing engine that scrapes competitors' prices in real-time, analyzes current inventory elasticity, and updates a local database with optimized prices every 5 minutes to maximize profit margins.",
+   "workspace": {
+    "required": false,
+    "artifact": null,
+    "status": "n/a"
+   },
+   "gate": {
+    "status": "deferred-decomposition-tier",
+    "style": "contract-tree (deferred)"
+   },
+   "gold": {
+    "required": false,
+    "status": "n/a"
+   },
+   "provenance": "corpus:ambitious-clean#17",
+   "title": "Dynamic Pricing Engine"
+  },
+  {
+   "id": "TEH-A018",
+   "task_type": "ambitious",
+   "family": "write-c-flight",
+   "tier": "L",
+   "prompt": "Write the C++ flight control logic for a quadcopter to autonomously navigate through a dense forest using only simulated LiDAR input, avoiding dynamic obstacles in real-time.",
+   "workspace": {
+    "required": false,
+    "artifact": null,
+    "status": "n/a"
+   },
+   "gate": {
+    "status": "deferred-decomposition-tier",
+    "style": "contract-tree (deferred)"
+   },
+   "gold": {
+    "required": false,
+    "status": "n/a"
+   },
+   "provenance": "corpus:ambitious-clean#18",
+   "title": "Autonomous Drone Navigation Logic"
+  },
+  {
+   "id": "TEH-A019",
+   "task_type": "ambitious",
+   "family": "comprehensive-financial-backtesting",
+   "tier": "L",
+   "prompt": "Build a comprehensive financial backtesting engine in Python that can simulate 20 years of historical tick-by-tick data, factoring in slippage, commission, and corporate actions like stock splits.",
+   "workspace": {
+    "required": false,
+    "artifact": null,
+    "status": "n/a"
+   },
+   "gate": {
+    "status": "deferred-decomposition-tier",
+    "style": "contract-tree (deferred)"
+   },
+   "gold": {
+    "required": false,
+    "status": "n/a"
+   },
+   "provenance": "corpus:ambitious-clean#19",
+   "title": "Stock Market Backtesting Framework"
+  },
+  {
+   "id": "TEH-A020",
+   "task_type": "ambitious",
+   "family": "write-blender-python",
+   "tier": "L",
+   "prompt": "Write a Blender Python script that procedurally generates a realistic, textured 3D city layout complete with road networks, zoning logic (residential vs. commercial), and varied building architecture based on a single random seed.",
+   "workspace": {
+    "required": false,
+    "artifact": null,
+    "status": "n/a"
+   },
+   "gate": {
+    "status": "deferred-decomposition-tier",
+    "style": "contract-tree (deferred)"
+   },
+   "gold": {
+    "required": false,
+    "status": "n/a"
+   },
+   "provenance": "corpus:ambitious-clean#20",
+   "title": "Procedural City Generator"
+  },
+  {
+   "id": "TEH-A021",
+   "task_type": "ambitious",
+   "family": "implement-fully-functional",
+   "tier": "L",
+   "prompt": "Implement a fully functional peer-to-peer cryptocurrency node from scratch in Rust, including transaction validation, a working Proof-of-Work consensus mechanism, and a local blockchain ledger.",
+   "workspace": {
+    "required": false,
+    "artifact": null,
+    "status": "n/a"
+   },
+   "gate": {
+    "status": "deferred-decomposition-tier",
+    "style": "contract-tree (deferred)"
+   },
+   "gold": {
+    "required": false,
+    "status": "n/a"
+   },
+   "provenance": "corpus:ambitious-clean#21",
+   "title": "Decentralized Cryptocurrency Node"
+  },
+  {
+   "id": "TEH-A022",
+   "task_type": "ambitious",
+   "family": "create-expert-system",
+   "tier": "L",
+   "prompt": "Create an expert system that takes in 50 pages of raw, unstructured patient medical history and lab results, cross-references it with medical literature, and outputs a differential diagnosis with statistical probabilities.",
+   "workspace": {
+    "required": false,
+    "artifact": null,
+    "status": "n/a"
+   },
+   "gate": {
+    "status": "deferred-decomposition-tier",
+    "style": "contract-tree (deferred)"
+   },
+   "gold": {
+    "required": false,
+    "status": "n/a"
+   },
+   "provenance": "corpus:ambitious-clean#22",
+   "title": "Automated Medical Diagnostician"
+  },
+  {
+   "id": "TEH-A023",
+   "task_type": "ambitious",
+   "family": "write-basic-web",
+   "tier": "L",
+   "prompt": "Write a basic web browser engine in C++ that can fetch a URL, parse HTML into a DOM tree, apply simple CSS rules, and render the output to a graphical window.",
+   "workspace": {
+    "required": false,
+    "artifact": null,
+    "status": "n/a"
+   },
+   "gate": {
+    "status": "deferred-decomposition-tier",
+    "style": "contract-tree (deferred)"
+   },
+   "gold": {
+    "required": false,
+    "status": "n/a"
+   },
+   "provenance": "corpus:ambitious-clean#23",
+   "title": "Browser Engine from Scratch"
+  },
+  {
+   "id": "TEH-A024",
+   "task_type": "ambitious",
+   "family": "tool-can-take",
+   "tier": "L",
+   "prompt": "Build a tool that can take any arbitrary, complex Python script utilizing advanced libraries (like Pandas or NumPy) and perfectly translate it into highly optimized, idiomatic C++ code.",
+   "workspace": {
+    "required": false,
+    "artifact": null,
+    "status": "n/a"
+   },
+   "gate": {
+    "status": "deferred-decomposition-tier",
+    "style": "contract-tree (deferred)"
+   },
+   "gold": {
+    "required": false,
+    "status": "n/a"
+   },
+   "provenance": "corpus:ambitious-clean#24",
+   "title": "Polyglot Code Converter"
+  },
+  {
+   "id": "TEH-A025",
+   "task_type": "ambitious",
+   "family": "ingest-raw-disorganized",
+   "tier": "L",
+   "prompt": "Ingest a raw, disorganized engineering notebook describing a new mechanical invention and draft a complete, legally robust patent application including claims, background, and figure descriptions.",
+   "workspace": {
+    "required": false,
+    "artifact": null,
+    "status": "n/a"
+   },
+   "gate": {
+    "status": "deferred-decomposition-tier",
+    "style": "contract-tree (deferred)"
+   },
+   "gold": {
+    "required": false,
+    "status": "n/a"
+   },
+   "provenance": "corpus:ambitious-clean#25",
+   "title": "Autonomous Patent Drafter"
+  },
+  {
+   "id": "TEH-A026",
+   "task_type": "ambitious",
+   "family": "bypass-operating-systems",
+   "tier": "L",
+   "prompt": "Bypass the operating system's networking capabilities and write a custom TCP/IP networking stack in C that can successfully perform a three-way handshake and download a web page.",
+   "workspace": {
+    "required": false,
+    "artifact": null,
+    "status": "n/a"
+   },
+   "gate": {
+    "status": "deferred-decomposition-tier",
+    "style": "contract-tree (deferred)"
+   },
+   "gold": {
+    "required": false,
+    "status": "n/a"
+   },
+   "provenance": "corpus:ambitious-clean#26",
+   "title": "Custom TCP/IP Stack"
+  },
+  {
+   "id": "TEH-A027",
+   "task_type": "ambitious",
+   "family": "take-120page-screenplay",
+   "tier": "L",
+   "prompt": "Take a 120-page screenplay PDF, extract the scene descriptions, and generate a complete, panel-by-panel visual storyboard using a diffusion model API, maintaining consistent character appearances.",
+   "workspace": {
+    "required": false,
+    "artifact": null,
+    "status": "n/a"
+   },
+   "gate": {
+    "status": "deferred-decomposition-tier",
+    "style": "contract-tree (deferred)"
+   },
+   "gold": {
+    "required": false,
+    "status": "n/a"
+   },
+   "provenance": "corpus:ambitious-clean#27",
+   "title": "Automated Film Script to Storyboard"
+  },
+  {
+   "id": "TEH-A028",
+   "task_type": "ambitious",
+   "family": "write-script-migrate",
+   "tier": "L",
+   "prompt": "Write a script to migrate a massive, 5TB live relational database to a NoSQL structure across a distributed cluster, handling real-time data ingestion during the transfer without losing a single record.",
+   "workspace": {
+    "required": false,
+    "artifact": null,
+    "status": "n/a"
+   },
+   "gate": {
+    "status": "deferred-decomposition-tier",
+    "style": "contract-tree (deferred)"
+   },
+   "gold": {
+    "required": false,
+    "status": "n/a"
+   },
+   "provenance": "corpus:ambitious-clean#28",
+   "title": "Database Migration with Zero Downtime"
+  },
+  {
+   "id": "TEH-A029",
+   "task_type": "ambitious",
+   "family": "reinforcement-learning-agent",
+   "tier": "L",
+   "prompt": "Build a reinforcement learning agent capable of learning to play any arbitrary Atari 2600 game purely from pixel inputs, without being given the specific rules of the game beforehand.",
+   "workspace": {
+    "required": false,
+    "artifact": null,
+    "status": "n/a"
+   },
+   "gate": {
+    "status": "deferred-decomposition-tier",
+    "style": "contract-tree (deferred)"
+   },
+   "gold": {
+    "required": false,
+    "status": "n/a"
+   },
+   "provenance": "corpus:ambitious-clean#29",
+   "title": "General Game Playing AI"
+  },
+  {
+   "id": "TEH-A030",
+   "task_type": "ambitious",
+   "family": "give-ai-link",
+   "tier": "L",
+   "prompt": "Give the AI a link to a recent machine learning research paper and have it autonomously download the dataset, write the architecture from scratch, train the model, and attempt to replicate the paper's exact benchmark results.",
+   "workspace": {
+    "required": false,
+    "artifact": null,
+    "status": "n/a"
+   },
+   "gate": {
+    "status": "deferred-decomposition-tier",
+    "style": "contract-tree (deferred)"
+   },
+   "gold": {
+    "required": false,
+    "status": "n/a"
+   },
+   "provenance": "corpus:ambitious-clean#30",
+   "title": "Automated Scientific Paper Replicator"
+  },
+  {
+   "id": "TEH-A031",
+   "task_type": "ambitious",
+   "family": "write-simulation-1000",
+   "tier": "L",
+   "prompt": "Write a simulation with 1,000 autonomous agents utilizing boids rules and pheromone tracking to solve complex mazes and transport resources, visualizing the emergent behavior in real-time.",
+   "workspace": {
+    "required": false,
+    "artifact": null,
+    "status": "n/a"
+   },
+   "gate": {
+    "status": "deferred-decomposition-tier",
+    "style": "contract-tree (deferred)"
+   },
+   "gold": {
+    "required": false,
+    "status": "n/a"
+   },
+   "provenance": "corpus:ambitious-clean#31",
+   "title": "Swarm Intelligence Simulator"
+  },
+  {
+   "id": "TEH-A032",
+   "task_type": "ambitious",
+   "family": "architect-complete-enterprise",
+   "tier": "L",
+   "prompt": "Architect a complete Enterprise Resource Planning (ERP) system for a manufacturing company, including modules for HR, supply chain, CRM, and accounting, with all database relationships mapped out in Prisma.",
+   "workspace": {
+    "required": false,
+    "artifact": null,
+    "status": "n/a"
+   },
+   "gate": {
+    "status": "deferred-decomposition-tier",
+    "style": "contract-tree (deferred)"
+   },
+   "gold": {
+    "required": false,
+    "status": "n/a"
+   },
+   "provenance": "corpus:ambitious-clean#32",
+   "title": "Full ERP System Scaffold"
+  },
+  {
+   "id": "TEH-A033",
+   "task_type": "ambitious",
+   "family": "write-python-application",
+   "tier": "L",
+   "prompt": "Write a Python application that actively profiles its own runtime performance, identifies bottlenecks, rewrites its own functions to be more efficient, and hot-reloads them without crashing.",
+   "workspace": {
+    "required": false,
+    "artifact": null,
+    "status": "n/a"
+   },
+   "gate": {
+    "status": "deferred-decomposition-tier",
+    "style": "contract-tree (deferred)"
+   },
+   "gold": {
+    "required": false,
+    "status": "n/a"
+   },
+   "provenance": "corpus:ambitious-clean#33",
+   "title": "Self-Modifying Codebase"
+  },
+  {
+   "id": "TEH-A034",
+   "task_type": "ambitious",
+   "family": "ingest-complex-corporate",
+   "tier": "L",
+   "prompt": "Ingest a complex corporate ledger with international transactions and write an algorithm that legally minimizes tax liability by routing funds through various international tax treaties and shell structures.",
+   "workspace": {
+    "required": false,
+    "artifact": null,
+    "status": "n/a"
+   },
+   "gate": {
+    "status": "deferred-decomposition-tier",
+    "style": "contract-tree (deferred)"
+   },
+   "gold": {
+    "required": false,
+    "status": "n/a"
+   },
+   "provenance": "corpus:ambitious-clean#34",
+   "title": "Automated Tax Optimization Engine"
+  },
+  {
+   "id": "TEH-A035",
+   "task_type": "ambitious",
+   "family": "physics-engine-calculates",
+   "tier": "L",
+   "prompt": "Build a physics engine that calculates the most fuel-efficient orbital trajectory for a spacecraft traveling from Earth to a specific moon of Jupiter, utilizing gravitational slingshots around Mars.",
+   "workspace": {
+    "required": false,
+    "artifact": null,
+    "status": "n/a"
+   },
+   "gate": {
+    "status": "deferred-decomposition-tier",
+    "style": "contract-tree (deferred)"
+   },
+   "gold": {
+    "required": false,
+    "status": "n/a"
+   },
+   "provenance": "corpus:ambitious-clean#35",
+   "title": "Deep-Space Trajectory Calculator"
+  },
+  {
+   "id": "TEH-A036",
+   "task_type": "ambitious",
+   "family": "agent-doesnt-just",
+   "tier": "L",
+   "prompt": "Build an agent that doesn't just look for syntax errors, but understands the entire architecture of a 100k-line repo, reviewing pull requests to ensure they don't break downstream microservices or violate undocumented design patterns.",
+   "workspace": {
+    "required": false,
+    "artifact": null,
+    "status": "n/a"
+   },
+   "gate": {
+    "status": "deferred-decomposition-tier",
+    "style": "contract-tree (deferred)"
+   },
+   "gold": {
+    "required": false,
+    "status": "n/a"
+   },
+   "provenance": "corpus:ambitious-clean#36",
+   "title": "Automated Code Reviewer with Context"
+  },
+  {
+   "id": "TEH-A037",
+   "task_type": "ambitious",
+   "family": "write-distributed-web",
+   "tier": "L",
+   "prompt": "Write a distributed web crawler in Elixir that can index 1 million web pages a day, extract semantic meaning using NLP, and serve search results via a custom PageRank algorithm.",
+   "workspace": {
+    "required": false,
+    "artifact": null,
+    "status": "n/a"
+   },
+   "gate": {
+    "status": "deferred-decomposition-tier",
+    "style": "contract-tree (deferred)"
+   },
+   "gold": {
+    "required": false,
+    "status": "n/a"
+   },
+   "provenance": "corpus:ambitious-clean#37",
+   "title": "Custom Search Engine Crawler"
+  },
+  {
+   "id": "TEH-A038",
+   "task_type": "ambitious",
+   "family": "tool-procedurally-generates",
+   "tier": "L",
+   "prompt": "Build a tool that procedurally generates fully functional, unique programming languages (including syntax, standard library, and a working interpreter) based on user-defined paradigms (e.g., \"Make a language based on culinary terms\").",
+   "workspace": {
+    "required": false,
+    "artifact": null,
+    "status": "n/a"
+   },
+   "gate": {
+    "status": "deferred-decomposition-tier",
+    "style": "contract-tree (deferred)"
+   },
+   "gold": {
+    "required": false,
+    "status": "n/a"
+   },
+   "provenance": "corpus:ambitious-clean#38",
+   "title": "Procedural Language Creator"
+  },
+  {
+   "id": "TEH-A039",
+   "task_type": "ambitious",
+   "family": "agent-analyzes-daily",
+   "tier": "L",
+   "prompt": "Build an agent that analyzes daily polling data, news cycles, and demographic shifts, and autonomously generates optimized daily schedules, speech talking points, and targeted ad copy for a mayoral candidate. 47. **Automated Quantum Circuit Optimizer:** Write a script that takes a complex, unoptimized quantum circuit design and mathematically reduces the gate count and circuit depth to minimize decoherence on noisy intermediate-scale quantum (NISQ) hardware.",
+   "workspace": {
+    "required": false,
+    "artifact": null,
+    "status": "n/a"
+   },
+   "gate": {
+    "status": "deferred-decomposition-tier",
+    "style": "contract-tree (deferred)"
+   },
+   "gold": {
+    "required": false,
+    "status": "n/a"
+   },
+   "provenance": "corpus:ambitious-clean#39",
+   "title": "AI-Driven Political Campaign Manager"
+  },
+  {
+   "id": "TEH-A040",
+   "task_type": "ambitious",
+   "family": "text-adventure-game",
+   "tier": "L",
+   "prompt": "Build a text adventure game engine where every NPC is an LLM agent with its own hidden goals, memories, and personality, and the environment state dynamically updates based on their autonomous interactions.",
+   "workspace": {
+    "required": false,
+    "artifact": null,
+    "status": "n/a"
+   },
+   "gate": {
+    "status": "deferred-decomposition-tier",
+    "style": "contract-tree (deferred)"
+   },
+   "gold": {
+    "required": false,
+    "status": "n/a"
+   },
+   "provenance": "corpus:ambitious-clean#40",
+   "title": "Dynamic Interactive Fiction Engine"
+  },
+  {
+   "id": "TEH-A041",
+   "task_type": "ambitious",
+   "family": "model-takes-multinational",
+   "tier": "L",
+   "prompt": "Build a model that takes in a multinational company's shipping routes, warehouse capacities, and current weather/geopolitical events, and autonomously reroutes cargo ships in real-time to prevent delays.",
+   "workspace": {
+    "required": false,
+    "artifact": null,
+    "status": "n/a"
+   },
+   "gate": {
+    "status": "deferred-decomposition-tier",
+    "style": "contract-tree (deferred)"
+   },
+   "gold": {
+    "required": false,
+    "status": "n/a"
+   },
+   "provenance": "corpus:ambitious-clean#41",
+   "title": "Global Supply Chain Optimizer"
+  },
+  {
+   "id": "TEH-A042",
+   "task_type": "ambitious",
+   "family": "write-3d-physics",
+   "tier": "L",
+   "prompt": "Write a 3D physics engine in C++ from scratch that accurately simulates rigid body dynamics, complex collision detection (GJK algorithm), and fluid dynamics using particle-in-cell methods.",
+   "workspace": {
+    "required": false,
+    "artifact": null,
+    "status": "n/a"
+   },
+   "gate": {
+    "status": "deferred-decomposition-tier",
+    "style": "contract-tree (deferred)"
+   },
+   "gold": {
+    "required": false,
+    "status": "n/a"
+   },
+   "provenance": "corpus:ambitious-clean#42",
+   "title": "Custom 3D Physics Engine"
+  },
+  {
+   "id": "TEH-A043",
+   "task_type": "ambitious",
+   "family": "create-ai-agent",
+   "tier": "L",
+   "prompt": "Create an AI agent that takes a company's legal redlines, connects via email to an opposing counsel's AI, and autonomously negotiates an MSA (Master Services Agreement) until both parties reach a legally binding compromise.",
+   "workspace": {
+    "required": false,
+    "artifact": null,
+    "status": "n/a"
+   },
+   "gate": {
+    "status": "deferred-decomposition-tier",
+    "style": "contract-tree (deferred)"
+   },
+   "gold": {
+    "required": false,
+    "status": "n/a"
+   },
+   "provenance": "corpus:ambitious-clean#43",
+   "title": "Automated Contract Negotiator"
+  },
+  {
+   "id": "TEH-A044",
+   "task_type": "ambitious",
+   "family": "computer-vision-pipeline",
+   "tier": "L",
+   "prompt": "Build a computer vision pipeline that processes a webcam feed of a person speaking American Sign Language at full speed and translates it into grammatically correct, spoken English audio in real-time.",
+   "workspace": {
+    "required": false,
+    "artifact": null,
+    "status": "n/a"
+   },
+   "gate": {
+    "status": "deferred-decomposition-tier",
+    "style": "contract-tree (deferred)"
+   },
+   "gold": {
+    "required": false,
+    "status": "n/a"
+   },
+   "provenance": "corpus:ambitious-clean#44",
+   "title": "Real-time Sign Language Translator"
+  },
+  {
+   "id": "TEH-A045",
+   "task_type": "ambitious",
+   "family": "write-script-audits",
+   "tier": "L",
+   "prompt": "Write a script that audits an entire AWS enterprise environment, identifies idle resources, underutilized instances, and orphaned snapshots, and autonomously executes the teardown to reduce the monthly bill by 30%.",
+   "workspace": {
+    "required": false,
+    "artifact": null,
+    "status": "n/a"
+   },
+   "gate": {
+    "status": "deferred-decomposition-tier",
+    "style": "contract-tree (deferred)"
+   },
+   "gold": {
+    "required": false,
+    "status": "n/a"
+   },
+   "provenance": "corpus:ambitious-clean#45",
+   "title": "Autonomous Infrastructure Cost Cutter"
+  },
+  {
+   "id": "TEH-A046",
+   "task_type": "ambitious",
+   "family": "ingest-raw-eeg",
+   "tier": "L",
+   "prompt": "Ingest raw EEG (electroencephalogram) time-series data from a human subject thinking of specific words, and train a model to decode those brainwaves back into text with high accuracy.",
+   "workspace": {
+    "required": false,
+    "artifact": null,
+    "status": "n/a"
+   },
+   "gate": {
+    "status": "deferred-decomposition-tier",
+    "style": "contract-tree (deferred)"
+   },
+   "gold": {
+    "required": false,
+    "status": "n/a"
+   },
+   "provenance": "corpus:ambitious-clean#46",
+   "title": "Brain-Computer Interface Decoder"
+  },
+  {
+   "id": "TEH-A047",
+   "task_type": "ambitious",
+   "family": "system-crawls-daily",
+   "tier": "L",
+   "prompt": "Build a system that crawls the daily news, identifies the core hypocrisies or absurdities in top stories, and writes full-length, highly nuanced satirical articles in the style of The Onion.",
+   "workspace": {
+    "required": false,
+    "artifact": null,
+    "status": "n/a"
+   },
+   "gate": {
+    "status": "deferred-decomposition-tier",
+    "style": "contract-tree (deferred)"
+   },
+   "gold": {
+    "required": false,
+    "status": "n/a"
+   },
+   "provenance": "corpus:ambitious-clean#47",
+   "title": "Automated Satirical News Generator"
+  },
+  {
+   "id": "TEH-A048",
+   "task_type": "ambitious",
+   "family": "write-fully-functional",
+   "tier": "L",
+   "prompt": "Write a fully functional emulator for the Nintendo 64 console in Rust, accurately reproducing the CPU, GPU (Reality Coprocessor), and audio timing to run commercial ROMs at 60 FPS.",
+   "workspace": {
+    "required": false,
+    "artifact": null,
+    "status": "n/a"
+   },
+   "gate": {
+    "status": "deferred-decomposition-tier",
+    "style": "contract-tree (deferred)"
+   },
+   "gold": {
+    "required": false,
+    "status": "n/a"
+   },
+   "provenance": "corpus:ambitious-clean#48",
+   "title": "Complete Hardware Emulation"
+  },
+  {
+   "id": "TEH-A049",
+   "task_type": "ambitious",
+   "family": "create-agent-detects",
+   "tier": "L",
+   "prompt": "Create an agent that detects a sudden negative virality event for a brand on social media, pauses all scheduled marketing, drafts a public apology statement, and outlines a 30-day reputation recovery plan.",
+   "workspace": {
+    "required": false,
+    "artifact": null,
+    "status": "n/a"
+   },
+   "gate": {
+    "status": "deferred-decomposition-tier",
+    "style": "contract-tree (deferred)"
+   },
+   "gold": {
+    "required": false,
+    "status": "n/a"
+   },
+   "provenance": "corpus:ambitious-clean#49",
+   "title": "Autonomous Crisis PR Manager"
+  },
+  {
+   "id": "TEH-A050",
+   "task_type": "ambitious",
+   "family": "design-genetic-sequence",
+   "tier": "L",
+   "prompt": "Design the genetic sequence for a synthetic biological circuit to be inserted into E. coli, programming the bacteria to change color in the presence of a specific environmental toxin.",
+   "workspace": {
+    "required": false,
+    "artifact": null,
+    "status": "n/a"
+   },
+   "gate": {
+    "status": "deferred-decomposition-tier",
+    "style": "contract-tree (deferred)"
+   },
+   "gold": {
+    "required": false,
+    "status": "n/a"
+   },
+   "provenance": "corpus:ambitious-clean#50",
+   "title": "Synthetic Biological Circuit Design"
+  },
+  {
+   "id": "TEH-A051",
+   "task_type": "ambitious",
+   "family": "provide-harness-1page",
+   "tier": "L",
+   "prompt": "Provide the harness with a 1-page treatment, and have it autonomously generate the script, synthesize the voice acting, generate the 3D environments, animate the characters, and edit a feature-length film.",
+   "workspace": {
+    "required": false,
+    "artifact": null,
+    "status": "n/a"
+   },
+   "gate": {
+    "status": "deferred-decomposition-tier",
+    "style": "contract-tree (deferred)"
+   },
+   "gold": {
+    "required": false,
+    "status": "n/a"
+   },
+   "provenance": "corpus:ambitious-clean#51",
+   "title": "AI-Directed Feature Film"
+  },
+  {
+   "id": "TEH-A052",
+   "task_type": "ambitious",
+   "family": "invent-new-highly",
+   "tier": "L",
+   "prompt": "Invent a new, highly intuitive alternative to SQL designed specifically for querying deeply nested graph data, and write the parser and execution engine for it.",
+   "workspace": {
+    "required": false,
+    "artifact": null,
+    "status": "n/a"
+   },
+   "gate": {
+    "status": "deferred-decomposition-tier",
+    "style": "contract-tree (deferred)"
+   },
+   "gold": {
+    "required": false,
+    "status": "n/a"
+   },
+   "provenance": "corpus:ambitious-clean#52",
+   "title": "Custom Database Query Language"
+  },
+  {
+   "id": "TEH-A053",
+   "task_type": "ambitious",
+   "family": "agent-reads-10k",
+   "tier": "L",
+   "prompt": "Build an agent that reads 10-K filings, listens to quarterly earnings call audio to detect CEO hesitation (voice analysis), and outputs a buy/sell recommendation with a deeply researched 20-page thesis.",
+   "workspace": {
+    "required": false,
+    "artifact": null,
+    "status": "n/a"
+   },
+   "gate": {
+    "status": "deferred-decomposition-tier",
+    "style": "contract-tree (deferred)"
+   },
+   "gold": {
+    "required": false,
+    "status": "n/a"
+   },
+   "provenance": "corpus:ambitious-clean#53",
+   "title": "Autonomous Hedge Fund Analyst"
+  },
+  {
+   "id": "TEH-A054",
+   "task_type": "ambitious",
+   "family": "write-rendering-engine",
+   "tier": "L",
+   "prompt": "Write a rendering engine capable of taking a standard 2D video feed and calculating the complex light interference patterns required to project it as a true 3D hologram.",
+   "workspace": {
+    "required": false,
+    "artifact": null,
+    "status": "n/a"
+   },
+   "gate": {
+    "status": "deferred-decomposition-tier",
+    "style": "contract-tree (deferred)"
+   },
+   "gold": {
+    "required": false,
+    "status": "n/a"
+   },
+   "provenance": "corpus:ambitious-clean#54",
+   "title": "Real-time Holographic Projection Render"
+  },
+  {
+   "id": "TEH-A055",
+   "task_type": "ambitious",
+   "family": "create-system-tracks",
+   "tier": "L",
+   "prompt": "Create a system that tracks all upcoming state legislation, cross-references it with a client's corporate interests, and autonomously drafts and emails customized lobbying letters to state representatives.",
+   "workspace": {
+    "required": false,
+    "artifact": null,
+    "status": "n/a"
+   },
+   "gate": {
+    "status": "deferred-decomposition-tier",
+    "style": "contract-tree (deferred)"
+   },
+   "gold": {
+    "required": false,
+    "status": "n/a"
+   },
+   "provenance": "corpus:ambitious-clean#55",
+   "title": "Automated Lobbyist Bot"
+  },
+  {
+   "id": "TEH-A056",
+   "task_type": "ambitious",
+   "family": "design-implement-novel",
+   "tier": "L",
+   "prompt": "Design and implement a novel, highly efficient routing protocol for a decentralized, low-bandwidth IoT mesh network that can survive 50% node failure without losing overall connectivity.",
+   "workspace": {
+    "required": false,
+    "artifact": null,
+    "status": "n/a"
+   },
+   "gate": {
+    "status": "deferred-decomposition-tier",
+    "style": "contract-tree (deferred)"
+   },
+   "gold": {
+    "required": false,
+    "status": "n/a"
+   },
+   "provenance": "corpus:ambitious-clean#56",
+   "title": "Mesh Network Routing Protocol"
+  },
+  {
+   "id": "TEH-A057",
+   "task_type": "ambitious",
+   "family": "ingest-architects-cad",
+   "tier": "L",
+   "prompt": "Ingest an architect's CAD file for a skyscraper and autonomously check every dimension, material, and exit route against the complete 2024 International Building Code, flagging all violations.",
+   "workspace": {
+    "required": false,
+    "artifact": null,
+    "status": "n/a"
+   },
+   "gate": {
+    "status": "deferred-decomposition-tier",
+    "style": "contract-tree (deferred)"
+   },
+   "gold": {
+    "required": false,
+    "status": "n/a"
+   },
+   "provenance": "corpus:ambitious-clean#57",
+   "title": "Automated Architecture Code Compliance"
+  },
+  {
+   "id": "TEH-A058",
+   "task_type": "ambitious",
+   "family": "train-model-purely",
+   "tier": "L",
+   "prompt": "Train a model purely on the works of Beethoven and Mahler, and have it compose a structurally perfect 4-movement symphony, providing the sheet music for every individual instrument in a 100-piece orchestra.",
+   "workspace": {
+    "required": false,
+    "artifact": null,
+    "status": "n/a"
+   },
+   "gate": {
+    "status": "deferred-decomposition-tier",
+    "style": "contract-tree (deferred)"
+   },
+   "gold": {
+    "required": false,
+    "status": "n/a"
+   },
+   "provenance": "corpus:ambitious-clean#58",
+   "title": "AI-Generated Symphony"
+  },
+  {
+   "id": "TEH-A059",
+   "task_type": "ambitious",
+   "family": "ai-takes-topographical",
+   "tier": "L",
+   "prompt": "Build an AI that takes a topographical map of a barren area and designs an entire 1-million-person city optimized for foot traffic, minimal carbon emissions, and optimal wind flow for cooling.",
+   "workspace": {
+    "required": false,
+    "artifact": null,
+    "status": "n/a"
+   },
+   "gate": {
+    "status": "deferred-decomposition-tier",
+    "style": "contract-tree (deferred)"
+   },
+   "gold": {
+    "required": false,
+    "status": "n/a"
+   },
+   "provenance": "corpus:ambitious-clean#59",
+   "title": "Autonomous Urban Planner"
+  },
+  {
+   "id": "TEH-A060",
+   "task_type": "ambitious",
+   "family": "architect-complex-defi",
+   "tier": "L",
+   "prompt": "Architect a complex DeFi lending protocol using Solidity smart contracts, deploy them to an Ethereum testnet, and build a React frontend that securely interacts with user wallets.",
+   "workspace": {
+    "required": false,
+    "artifact": null,
+    "status": "n/a"
+   },
+   "gate": {
+    "status": "deferred-decomposition-tier",
+    "style": "contract-tree (deferred)"
+   },
+   "gold": {
+    "required": false,
+    "status": "n/a"
+   },
+   "provenance": "corpus:ambitious-clean#60",
+   "title": "Full-Stack Decentralized App (dApp)"
+  },
+  {
+   "id": "TEH-A061",
+   "task_type": "ambitious",
+   "family": "have-agent-crawl",
+   "tier": "L",
+   "prompt": "Have the agent crawl digitized archives of 18th-century maritime logs to trace the exact route and cargo manifests of a specific lost merchant ship, compiling the findings into an academic paper.",
+   "workspace": {
+    "required": false,
+    "artifact": null,
+    "status": "n/a"
+   },
+   "gate": {
+    "status": "deferred-decomposition-tier",
+    "style": "contract-tree (deferred)"
+   },
+   "gold": {
+    "required": false,
+    "status": "n/a"
+   },
+   "provenance": "corpus:ambitious-clean#61",
+   "title": "Autonomous Historical Researcher"
+  },
+  {
+   "id": "TEH-A062",
+   "task_type": "ambitious",
+   "family": "multimodal-system-simultaneously",
+   "tier": "L",
+   "prompt": "Build a multimodal system that simultaneously analyzes a user's facial micro-expressions, vocal tonality, and text input to accurately predict their emotional state and adjust its own conversational tone accordingly.",
+   "workspace": {
+    "required": false,
+    "artifact": null,
+    "status": "n/a"
+   },
+   "gate": {
+    "status": "deferred-decomposition-tier",
+    "style": "contract-tree (deferred)"
+   },
+   "gold": {
+    "required": false,
+    "status": "n/a"
+   },
+   "provenance": "corpus:ambitious-clean#62",
+   "title": "Real-time Emotion Parsing AI"
+  },
+  {
+   "id": "TEH-A063",
+   "task_type": "ambitious",
+   "family": "give-agent-100",
+   "tier": "L",
+   "prompt": "Give the agent a $100 budget and an AWS account, and have it autonomously research a market gap, code a SaaS product, set up the landing page, and run targeted ads to acquire its first paying customer.",
+   "workspace": {
+    "required": false,
+    "artifact": null,
+    "status": "n/a"
+   },
+   "gate": {
+    "status": "deferred-decomposition-tier",
+    "style": "contract-tree (deferred)"
+   },
+   "gold": {
+    "required": false,
+    "status": "n/a"
+   },
+   "provenance": "corpus:ambitious-clean#63",
+   "title": "AI-Driven Startup Founder"
+  },
+  {
+   "id": "TEH-A064",
+   "task_type": "ambitious",
+   "family": "write-entire-deep",
+   "tier": "L",
+   "prompt": "Write an entire deep learning framework from scratch in C (similar to PyTorch but minimal), implementing backpropagation, matrix multiplication, and GPU acceleration via CUDA.",
+   "workspace": {
+    "required": false,
+    "artifact": null,
+    "status": "n/a"
+   },
+   "gate": {
+    "status": "deferred-decomposition-tier",
+    "style": "contract-tree (deferred)"
+   },
+   "gold": {
+    "required": false,
+    "status": "n/a"
+   },
+   "provenance": "corpus:ambitious-clean#64",
+   "title": "Custom Machine Learning Framework"
+  },
+  {
+   "id": "TEH-A065",
+   "task_type": "ambitious",
+   "family": "ingest-entire-us",
+   "tier": "L",
+   "prompt": "Ingest the entire U.S. tax code and employ formal logic verification to autonomously discover contradictions or unpatched loopholes that could theoretically allow for zero corporate tax liability.",
+   "workspace": {
+    "required": false,
+    "artifact": null,
+    "status": "n/a"
+   },
+   "gate": {
+    "status": "deferred-decomposition-tier",
+    "style": "contract-tree (deferred)"
+   },
+   "gold": {
+    "required": false,
+    "status": "n/a"
+   },
+   "provenance": "corpus:ambitious-clean#65",
+   "title": "Automated Legal Loophole Finder"
+  },
+  {
+   "id": "TEH-A066",
+   "task_type": "ambitious",
+   "family": "simulation-where-thousands",
+   "tier": "L",
+   "prompt": "Build a simulation where thousands of distinct species (plants, herbivores, carnivores) evolve over millions of simulated years, dynamically mutating their traits based on environmental pressures.",
+   "workspace": {
+    "required": false,
+    "artifact": null,
+    "status": "n/a"
+   },
+   "gate": {
+    "status": "deferred-decomposition-tier",
+    "style": "contract-tree (deferred)"
+   },
+   "gold": {
+    "required": false,
+    "status": "n/a"
+   },
+   "provenance": "corpus:ambitious-clean#66",
+   "title": "Procedural Ecosystem Simulator"
+  },
+  {
+   "id": "TEH-A067",
+   "task_type": "ambitious",
+   "family": "take-massive-unmaintained",
+   "tier": "L",
+   "prompt": "Take a massive, unmaintained COBOL banking system from the 1980s and safely translate it into a modern Java/Spring Boot microservices architecture without losing a single cent in transaction precision.",
+   "workspace": {
+    "required": false,
+    "artifact": null,
+    "status": "n/a"
+   },
+   "gate": {
+    "status": "deferred-decomposition-tier",
+    "style": "contract-tree (deferred)"
+   },
+   "gold": {
+    "required": false,
+    "status": "n/a"
+   },
+   "provenance": "corpus:ambitious-clean#67",
+   "title": "Autonomous Codebase Modernizer"
+  },
+  {
+   "id": "TEH-A068",
+   "task_type": "ambitious",
+   "family": "ingest-live-camera",
+   "tier": "L",
+   "prompt": "Ingest live camera feeds of an NBA game, analyze player formations and fatigue levels, and autonomously output optimal offensive play calls to the coach's tablet in real-time.",
+   "workspace": {
+    "required": false,
+    "artifact": null,
+    "status": "n/a"
+   },
+   "gate": {
+    "status": "deferred-decomposition-tier",
+    "style": "contract-tree (deferred)"
+   },
+   "gold": {
+    "required": false,
+    "status": "n/a"
+   },
+   "provenance": "corpus:ambitious-clean#68",
+   "title": "Real-time Sports Strategy Engine"
+  },
+  {
+   "id": "TEH-A069",
+   "task_type": "ambitious",
+   "family": "feed-ai-last",
+   "tier": "L",
+   "prompt": "Feed the AI the last 5 years of research papers on Alzheimer's disease, and have it synthesize the data to propose a highly novel, chemically viable drug compound and the methodology to test it.",
+   "workspace": {
+    "required": false,
+    "artifact": null,
+    "status": "n/a"
+   },
+   "gate": {
+    "status": "deferred-decomposition-tier",
+    "style": "contract-tree (deferred)"
+   },
+   "gold": {
+    "required": false,
+    "status": "n/a"
+   },
+   "provenance": "corpus:ambitious-clean#69",
+   "title": "Automated Scientific Hypothesis Generator"
+  },
+  {
+   "id": "TEH-A070",
+   "task_type": "ambitious",
+   "family": "give-agent-companys",
+   "tier": "L",
+   "prompt": "Give the agent the company's maximum budget and SLAs, and have it email back and forth with 10 different SaaS vendors to negotiate the lowest possible price for enterprise licenses.",
+   "workspace": {
+    "required": false,
+    "artifact": null,
+    "status": "n/a"
+   },
+   "gate": {
+    "status": "deferred-decomposition-tier",
+    "style": "contract-tree (deferred)"
+   },
+   "gold": {
+    "required": false,
+    "status": "n/a"
+   },
+   "provenance": "corpus:ambitious-clean#70",
+   "title": "Autonomous Negotiation of Vendor Contracts"
+  },
+  {
+   "id": "TEH-A071",
+   "task_type": "ambitious",
+   "family": "write-embedded-software",
+   "tier": "L",
+   "prompt": "Write the embedded software that takes raw nerve impulses from a patient's amputated limb and translates them into precise, highly dexterous movements for a robotic hand.",
+   "workspace": {
+    "required": false,
+    "artifact": null,
+    "status": "n/a"
+   },
+   "gate": {
+    "status": "deferred-decomposition-tier",
+    "style": "contract-tree (deferred)"
+   },
+   "gold": {
+    "required": false,
+    "status": "n/a"
+   },
+   "provenance": "corpus:ambitious-clean#71",
+   "title": "AI-Driven Cybernetic Prosthetic Controller"
+  },
+  {
+   "id": "TEH-A072",
+   "task_type": "ambitious",
+   "family": "crawler-safely-navigates",
+   "tier": "L",
+   "prompt": "Build a crawler that safely navigates Tor hidden services, scrapes forums for mentions of a specific corporate entity, and builds a threat intelligence graph of potential incoming cyberattacks.",
+   "workspace": {
+    "required": false,
+    "artifact": null,
+    "status": "n/a"
+   },
+   "gate": {
+    "status": "deferred-decomposition-tier",
+    "style": "contract-tree (deferred)"
+   },
+   "gold": {
+    "required": false,
+    "status": "n/a"
+   },
+   "provenance": "corpus:ambitious-clean#72",
+   "title": "Automated Deep Web Intelligence Gatherer"
+  },
+  {
+   "id": "TEH-A073",
+   "task_type": "ambitious",
+   "family": "invent-completely-new",
+   "tier": "L",
+   "prompt": "Invent a completely new paradigm of programming (neither object-oriented, functional, nor procedural), define its rules, write a compiler, and build a complex web server using only this new paradigm.",
+   "workspace": {
+    "required": false,
+    "artifact": null,
+    "status": "n/a"
+   },
+   "gate": {
+    "status": "deferred-decomposition-tier",
+    "style": "contract-tree (deferred)"
+   },
+   "gold": {
+    "required": false,
+    "status": "n/a"
+   },
+   "provenance": "corpus:ambitious-clean#73",
+   "title": "Custom Programming Paradigm"
+  },
+  {
+   "id": "TEH-A074",
+   "task_type": "ambitious",
+   "family": "write-ai-mars",
+   "tier": "L",
+   "prompt": "Write the AI for a Mars rover that must autonomously explore terrain, identify scientifically valuable rocks, and manage its own solar battery levels with a 20-minute communication delay to Earth.",
+   "workspace": {
+    "required": false,
+    "artifact": null,
+    "status": "n/a"
+   },
+   "gate": {
+    "status": "deferred-decomposition-tier",
+    "style": "contract-tree (deferred)"
+   },
+   "gold": {
+    "required": false,
+    "status": "n/a"
+   },
+   "provenance": "corpus:ambitious-clean#74",
+   "title": "Autonomous Planetary Rover Logic"
+  },
+  {
+   "id": "TEH-A075",
+   "task_type": "ambitious",
+   "family": "have-ai-ingest",
+   "tier": "L",
+   "prompt": "Have the AI ingest hours of Dave Chappelle and John Mulaney specials, and autonomously write a 15-minute stand-up routine with perfect pacing, callback jokes, and cultural relevance.",
+   "workspace": {
+    "required": false,
+    "artifact": null,
+    "status": "n/a"
+   },
+   "gate": {
+    "status": "deferred-decomposition-tier",
+    "style": "contract-tree (deferred)"
+   },
+   "gold": {
+    "required": false,
+    "status": "n/a"
+   },
+   "provenance": "corpus:ambitious-clean#75",
+   "title": "AI-Generated Stand-up Comedy Routine"
+  },
+  {
+   "id": "TEH-A076",
+   "task_type": "ambitious",
+   "family": "agent-monitors-zillow",
+   "tier": "L",
+   "prompt": "Build an agent that monitors Zillow for undervalued properties, automatically runs rehab cost estimations using contractor APIs, and auto-generates cash offer letters to the sellers within 5 minutes of listing. 90. **Custom High-Frequency Trading Protocol:** Write a networking protocol optimized for FPGA hardware that shaves microseconds off trade execution times by restructuring the TCP headers and utilizing custom packet routing.",
+   "workspace": {
+    "required": false,
+    "artifact": null,
+    "status": "n/a"
+   },
+   "gate": {
+    "status": "deferred-decomposition-tier",
+    "style": "contract-tree (deferred)"
+   },
+   "gold": {
+    "required": false,
+    "status": "n/a"
+   },
+   "provenance": "corpus:ambitious-clean#76",
+   "title": "Automated Real Estate Flipper"
+  },
+  {
+   "id": "TEH-A077",
+   "task_type": "ambitious",
+   "family": "create-system-monitors",
+   "tier": "L",
+   "prompt": "Create a system that monitors a live political debate, transcribes the audio, autonomously searches historical records and databases, and outputs a verified \"True/False/Misleading\" verdict on statements within 10 seconds.",
+   "workspace": {
+    "required": false,
+    "artifact": null,
+    "status": "n/a"
+   },
+   "gate": {
+    "status": "deferred-decomposition-tier",
+    "style": "contract-tree (deferred)"
+   },
+   "gold": {
+    "required": false,
+    "status": "n/a"
+   },
+   "provenance": "corpus:ambitious-clean#77",
+   "title": "Autonomous Fact-Checking Engine"
+  },
+  {
+   "id": "TEH-A078",
+   "task_type": "ambitious",
+   "family": "tool-takes-desired",
+   "tier": "L",
+   "prompt": "Build a tool that takes a desired phenotypic change in an organism (e.g., drought resistance in wheat) and autonomously designs the exact CRISPR-Cas9 guide RNA sequence required to make the edit.",
+   "workspace": {
+    "required": false,
+    "artifact": null,
+    "status": "n/a"
+   },
+   "gate": {
+    "status": "deferred-decomposition-tier",
+    "style": "contract-tree (deferred)"
+   },
+   "gold": {
+    "required": false,
+    "status": "n/a"
+   },
+   "provenance": "corpus:ambitious-clean#78",
+   "title": "AI-Driven Gene Editing Designer"
+  },
+  {
+   "id": "TEH-A079",
+   "task_type": "ambitious",
+   "family": "deploy-swarm-50",
+   "tier": "L",
+   "prompt": "Deploy a swarm of 50 AI agents that can handle thousands of simultaneous customer service chats in 20 different languages, capable of processing refunds and updating shipping addresses autonomously.",
+   "workspace": {
+    "required": false,
+    "artifact": null,
+    "status": "n/a"
+   },
+   "gate": {
+    "status": "deferred-decomposition-tier",
+    "style": "contract-tree (deferred)"
+   },
+   "gold": {
+    "required": false,
+    "status": "n/a"
+   },
+   "provenance": "corpus:ambitious-clean#79",
+   "title": "Automated Multi-lingual Customer Support Swarm"
+  },
+  {
+   "id": "TEH-A080",
+   "task_type": "ambitious",
+   "family": "write-application-doesnt",
+   "tier": "L",
+   "prompt": "Write an application that doesn't just compose music, but dynamically alters the tempo, volume, and emotional intensity of a pre-written score in real-time based on the live biofeedback (heart rate) of the audience.",
+   "workspace": {
+    "required": false,
+    "artifact": null,
+    "status": "n/a"
+   },
+   "gate": {
+    "status": "deferred-decomposition-tier",
+    "style": "contract-tree (deferred)"
+   },
+   "gold": {
+    "required": false,
+    "status": "n/a"
+   },
+   "provenance": "corpus:ambitious-clean#80",
+   "title": "Autonomous Film Score Conductor"
+  },
+  {
+   "id": "TEH-A081",
+   "task_type": "ambitious",
+   "family": "ai-system-manages",
+   "tier": "L",
+   "prompt": "Build an AI system that manages the entire lifecycle of returned e-commerce products, autonomously deciding whether an item should be restocked, refurbished, recycled, or liquidated based on market value and condition analysis.",
+   "workspace": {
+    "required": false,
+    "artifact": null,
+    "status": "n/a"
+   },
+   "gate": {
+    "status": "deferred-decomposition-tier",
+    "style": "contract-tree (deferred)"
+   },
+   "gold": {
+    "required": false,
+    "status": "n/a"
+   },
+   "provenance": "corpus:ambitious-clean#81",
+   "title": "Automated Reverse Supply Chain Logistics"
+  },
+  {
+   "id": "TEH-A082",
+   "task_type": "ambitious",
+   "family": "have-agent-synthesize",
+   "tier": "L",
+   "prompt": "Have the agent synthesize the works of Kant, Nietzsche, and modern quantum physics to write a 300-page original philosophical treatise proposing a new ethical framework for artificial superintelligence.",
+   "workspace": {
+    "required": false,
+    "artifact": null,
+    "status": "n/a"
+   },
+   "gate": {
+    "status": "deferred-decomposition-tier",
+    "style": "contract-tree (deferred)"
+   },
+   "gold": {
+    "required": false,
+    "status": "n/a"
+   },
+   "provenance": "corpus:ambitious-clean#82",
+   "title": "AI-Generated Philosophical Treatise"
+  },
+  {
+   "id": "TEH-A083",
+   "task_type": "ambitious",
+   "family": "write-navigation-objectrecognition",
+   "tier": "L",
+   "prompt": "Write the navigation and object-recognition logic for a submarine drone exploring the Marianas Trench, capable of autonomously deciding to follow biological anomalies while managing extreme pressure constraints.",
+   "workspace": {
+    "required": false,
+    "artifact": null,
+    "status": "n/a"
+   },
+   "gate": {
+    "status": "deferred-decomposition-tier",
+    "style": "contract-tree (deferred)"
+   },
+   "gold": {
+    "required": false,
+    "status": "n/a"
+   },
+   "provenance": "corpus:ambitious-clean#83",
+   "title": "Autonomous Deep-Sea Drone Explorer"
+  },
+  {
+   "id": "TEH-A084",
+   "task_type": "ambitious",
+   "family": "take-3d-model",
+   "tier": "L",
+   "prompt": "Take a 3D model of an empty concert hall and autonomously optimize the angles of every wall and the material of every seat to ensure perfect acoustic reverberation for a symphony orchestra.",
+   "workspace": {
+    "required": false,
+    "artifact": null,
+    "status": "n/a"
+   },
+   "gate": {
+    "status": "deferred-decomposition-tier",
+    "style": "contract-tree (deferred)"
+   },
+   "gold": {
+    "required": false,
+    "status": "n/a"
+   },
+   "provenance": "corpus:ambitious-clean#84",
+   "title": "AI-Driven Architectural Acoustics"
+  },
+  {
+   "id": "TEH-A085",
+   "task_type": "ambitious",
+   "family": "ingest-materials-science",
+   "tier": "L",
+   "prompt": "Ingest materials science databases and quantum chemistry simulations, and have the AI autonomously propose the atomic structure of 10 new alloys that have the highest probability of achieving room-temperature superconductivity.",
+   "workspace": {
+    "required": false,
+    "artifact": null,
+    "status": "n/a"
+   },
+   "gate": {
+    "status": "deferred-decomposition-tier",
+    "style": "contract-tree (deferred)"
+   },
+   "gold": {
+    "required": false,
+    "status": "n/a"
+   },
+   "provenance": "corpus:ambitious-clean#85",
+   "title": "Automated Superconductor Discovery"
   },
   {
    "id": "TEH-E001",

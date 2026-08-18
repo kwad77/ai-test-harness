@@ -35,7 +35,7 @@ The full design — metrics, validation rules, judge protocol, threats to validi
 | Path | What |
 |---|---|
 | `SPEC.md` | The complete harness specification and build plan |
-| `cases/teh-v1-seed-cases.json` | 500 frozen seed prompts across 7 task types (code, docs, grounded transforms, Q&A) |
+| `cases/teh-v1-seed-cases.json` | 585 frozen seed prompts: 7 v1 task types (code, docs, grounded transforms, Q&A) plus 100 `interactive` and 85 `ambitious` cases frozen now, activated in v2 |
 | `exemplars/` | One **fully promoted, runnable** case per task type — frozen workspace, executable gate, reference solution, stored fail/pass proofs |
 | `exemplars/run-proofs.mjs` | Conformance kit (see below) |
 | `AUTHORING.md` | The playbook for promoting seed cases and authoring new ones |
@@ -105,5 +105,5 @@ numbers stay comparable over time.
 
 ## Status
 
-Spec, 500-case seed set, exemplars, and authoring playbook are complete. Runner, adapters, and
+Spec, 585-case seed set, exemplars, and authoring playbook are complete. Runner, adapters, and
 scorer are not yet built — start at SPEC.md §12 P0.

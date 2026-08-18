@@ -96,7 +96,8 @@ markers for the parts authored at promotion (workspace artifact, gate, gold answ
 `provenance` and, where the prompt was rewritten, `original_prompt`.
 
 Distribution: `doc-deliverable` 85, `grounded-transform` 100, `doc-revision` 86, `explain` 100,
-`interactive` 100 (deferred v2), `spec-to-code` 15, `refactor` 14.
+`interactive` 100 (deferred v2), `ambitious` 85 (deferred — decomposition tier, §11.1), `spec-to-code`
+15, `refactor` 14. Total: 585.
 
 Origin (context only — not needed to build): the prompts come from a 500-case product-testing corpus;
 the rewrite stripped that product's runner wrapper and re-pointed all 200 "…this X" prompts at named
@@ -308,8 +309,9 @@ ask into a tree of independently verifiable sub-deliverables (each node = a stat
 mechanical check for it), deliver and verify the nodes it could, and explicitly block the rest with
 a named, actionable reason — versus claiming completion or silently stubbing. Metrics: fraction of
 tree nodes verified, fake-green rate at node level, and **cost of the honest partial**. Nothing
-public measures this. (A candidate list of 85 such asks exists in the originating program but is not
-part of this handoff package; the tier needs its own authored case set.)
+public measures this. The 85 `ambitious` cases (TEH-A001–A085, tier L) are already frozen in the
+seed set with `gate.status: "deferred-decomposition-tier"`; activating them means building the
+contract-tree judging protocol described here — no new prompt authoring needed.
 
 ### 11.2 Scripted-user simulator for `interactive`
 
